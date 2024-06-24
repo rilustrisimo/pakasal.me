@@ -37,6 +37,7 @@ var Theme = {
 
             $('.functions__item a').removeClass('active');
             $(this).addClass('active');
+            $('.col-custom').show();
             $('.col-custom:not(.is-gift)').hide();
         });
 
@@ -45,6 +46,7 @@ var Theme = {
 
             $('.functions__item a').removeClass('active');
             $(this).addClass('active');
+            $('.col-custom').show();
             $('.col-custom:not(.is-uploads)').hide();
         });
 
