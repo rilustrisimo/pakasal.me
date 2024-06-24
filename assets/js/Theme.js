@@ -4,6 +4,8 @@ var Theme = {
 
     selectLiveSearchAutoStart:0,
 
+    attach: [],
+
     init:function( $ ) {
         this._initHamburgerMenu();
         this._initMobileMenu();
@@ -12,6 +14,12 @@ var Theme = {
         this.initResponsiveTables();
         this._initTabsStateFromHash( $ );
         this.mobileChecker($);
+        this.initHighlights($);
+        this.initModalScripts($);
+        this.initMediaRoute($);
+        this.initGallerySlick($);
+        this.initCopy($);
+        this.initIsGift($);
 
         $( '[data-toggle="tooltip"]' ).tooltip();
 
@@ -20,6 +28,154 @@ var Theme = {
         $('.counter').counterUp({
             delay: 10,
             time: 1000
+        });
+    },
+
+    initIsGift: function($){
+        $('.gift-btn').click(function(e){
+            e.preventDefault();
+
+            $('.functions__item a').removeClass('active');
+            $(this).addClass('active');
+            $('.col-custom:not(.is-gift)').hide();
+        });
+
+        $('.upload-btn').click(function(e){
+            e.preventDefault();
+
+            $('.functions__item a').removeClass('active');
+            $(this).addClass('active');
+            $('.col-custom:not(.is-uploads)').hide();
+        });
+
+        $('.show-all').click(function(e){
+            e.preventDefault();
+
+            $('.functions__item a').removeClass('active');
+            $(this).addClass('active');
+            $('.col-custom').show();
+        });
+
+        $('.posts__item').each(function(){
+            var w = $(this).width();
+            $(this).find('img').css({
+                'height': w+'px',
+                'width': w+'px'
+            });
+        });
+    },
+
+    initCopy: function($){
+        $('.copyButton').click(function(e){
+            e.preventDefault();
+
+            // Create a temporary input element
+            var tempInput = document.createElement("input");
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            
+            // Select the URL in the input element
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999); /* For mobile devices */
+            
+            // Copy the selected text
+            document.execCommand("copy");
+            
+            // Remove the temporary input element
+            document.body.removeChild(tempInput);
+    
+            // Show notification
+            $('#copyNotification').fadeIn().delay(1500).fadeOut();
+        });
+    },
+
+    initGallerySlick: function($){
+        $('.post-single__gallery').slick({
+            dots: true,
+            arrows: true,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            adaptiveHeight: true,
+            autoplay: false
+        });
+    },
+
+    initMediaRoute: function($){
+        (function($) {
+            $(document).ready(function() {
+                // Ensure the media frame opens with the 'Upload Files' tab
+                wp.media.view.MediaFrame.Select.prototype.open = function() {
+                    // Call the original open method
+                    wp.media.view.MediaFrame.prototype.open.apply(this, arguments);
+        
+                    // Ensure the media frame opens with the 'Upload Files' tab
+                    this.$el.find('.media-frame-router .media-menu-item').first().trigger('click');
+
+
+                    Theme.attach = [];
+
+                    setInterval(function() {
+                        $('.attachment.selected').each(function() {
+                            var id = $(this).attr('data-id');
+                            if (Theme.attach.indexOf(id) === -1) {
+                                Theme.attach.push(id);
+                            }
+                        });
+
+                        var attachArray = Theme.attach;
+                        var selector = '';
+                    
+                        attachArray.forEach(function(id) {
+                            selector += '[data-id="' + id + '"], ';
+                        });
+                    
+                        // Remove the last comma and space
+                        if (selector.length > 0) {
+                            selector = selector.slice(0, -2);
+                        }
+
+                        $('.attachments li').not(selector).hide();
+                    }, 10);
+                }
+            });
+        })(jQuery);                      
+    },
+
+    initHighlights: function($){
+        Fancybox.bind("[data-fancybox]", {
+            Toolbar: true,
+            loop: true,
+            hideScrollbar: false,
+            animated: true,
+            clickContent: function(current, event) {
+                return current.type === "image" ? "zoom" : false;
+            },
+            Thumbs: false,
+            Slideshow: {
+                playOnStart: true,
+                timeout: 8000
+            }
+        });
+    },
+
+    initModalScripts: function($){
+        $('.modal-btn').click(function(e){
+            e.preventDefault();
+
+            var id = $(this).attr('modal-id');
+            $('.modal-custom').hide();
+            $('#'+id).show();
+        });
+
+        $('.back-btn').click(function(e){
+            e.preventDefault();
+
+            $(this).parents('.modal-custom').hide();
+        });
+
+        $('.acf-form-submit a').click(function(){
+            $(this).parents('.acf-form').submit();
         });
     },
 

@@ -7,39 +7,24 @@
  * @version   1.0.0
  */
 
-$is_back_to_top = qed_get_option( 'back-to-top', 'option' );
+
+$profile_pic = qed_get_option( 'profile_picture', 'option' );
+
 do_action('eyor_after_main_content');
-if ( qed_get_option( 'is_testimonial_enabled', 'option' ) && qed_is_display_testimonials() ) :?>
-<div class="qed-testimonials__wrap">
-	<div class="qed-testimonials__inner-wrap">
-		<?php
-		$testimonial_title = ( qed_get_option( 'testimonial_section_title', 'option' ) ) ? ' title="' . qed_get_option( 'testimonial_section_title', 'option' ) . '"': '';
-		$testimonial_words_limit = ( qed_get_option( 'is_testimonial_excerpt', 'option' ) ) ? ' words_limit="' . qed_get_option( 'testimonial_excerpt_length', 'option' ) . '"':'';
-		$testimonial_order = ( qed_get_option( 'testimonial_order', 'option' ) ) ? ' order="' . qed_get_option( 'testimonial_order', 'option' ) . '"':'';
-		$testimonial_orderby = ( qed_get_option( 'testimonial_orderby', 'option' ) ) ? ' orderby="' . qed_get_option( 'testimonial_orderby', 'option' ) . '"':'';
-		$testimonial_shortcode = sprintf('[testimonials%s%s%s]',
-			$testimonial_words_limit,
-			$testimonial_order,
-			$testimonial_orderby
-		);
-		echo do_shortcode( $testimonial_shortcode );
-		?>
-	</div>
-</div>
-<?php endif; ?>
+?>
+
 <footer class="footer">
-	<?php get_template_part( 'templates/footer/widget-areas' ); ?>
 	<div class="footer__bottom">
-		<?php
-		if ( $is_back_to_top ) {
-			echo '<div class="footer__arrow-top"><a href="#"><i class="fa fa-chevron-up"></i></a></div>';
-		}
-		?>
-		<div class="container">
+		<div class="container footer-container">
 			<div class="row">
 				<div class="col-md-12">
-					<?php //get_template_part( 'templates/footer/info' ); ?>
-					<div class="footer__copyright"><?php echo qed_esc_text( qed_get_option( 'footer_text_note', 'option', '© 2020 - Eyorsogood | Development and Design by Rouie Ilustrisimo' ), 'option_input', true ); ?></div>
+					<div class="footer-btns">
+						<div class="footer-btns__item"><a href="#" class="modal-btn" modal-id="accom"><i class="fa-solid fa-house"></i></a></div>
+						<div class="footer-btns__item"><a href="#" class="modal-btn" modal-id="code"><i class="fa-solid fa-qrcode"></i></a></div>
+						<div class="footer-btns__item"><a href="<?php echo get_permalink(63); ?>"><i class="fa-regular fa-square-plus"></i></a></div>
+						<div class="footer-btns__item"><a href="#" class="modal-btn" modal-id="message"><i class="fa-regular fa-paper-plane"></i></a></div>
+						<div class="footer-btns__item pp <?php echo (is_front_page())?'home':''; ?>"><a href="<?php echo get_home_url(); ?>"><img src="<?php echo $profile_pic; ?>"></a></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -47,10 +32,12 @@ if ( qed_get_option( 'is_testimonial_enabled', 'option' ) && qed_is_display_test
 </footer>
 <input type="hidden" id="base-url" value="<?php echo home_url(); ?>">
 <input type="hidden" id="ajax-url" value="<?php echo admin_url('admin-ajax.php'); ?>">
-<div style="display:none" class="fancybox-hidden">
-	<div id="contact-lightbox" style="display: block;max-width: 1080px;width: 100%;">
-		<?php get_template_part( 'templates/lightbox', 'contact-form' );?>
-	</div>
-</div>
 <?php
+get_template_part( 'templates/modals/page', 'rsvp' );
+get_template_part( 'templates/modals/page', 'accom' );
+get_template_part( 'templates/modals/page', 'code' );
+get_template_part( 'templates/modals/page', 'contact' );
+get_template_part( 'templates/modals/page', 'message' );
+get_template_part( 'templates/modals/page', 'playlist' );
+get_template_part( 'templates/modals/page', 'guests' );
 get_template_part( 'templates/footer/footer', 'clean' );

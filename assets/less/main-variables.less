@@ -1,5 +1,6 @@
 /*@import url("https://use.typekit.net/gwp5iiu.css");*/
-@assetsUrl:'../../themes/eyor-theme/assets/';                /* @theme_option:assetsUrl */
+@assetsUrl:'../../themes/pakasal-theme/assets/';
+@import url('../../themes/pakasal-theme/assets/fonts/instagram.css');
 
 // LTR, RTL variable
 @bi-app-left:left;                                 /* @theme_option:bi-app-left */
@@ -38,12 +39,12 @@
 @forms-bg:transparent;                            /* @theme_option:forms_bg */
 @forms__button-bg: transparent;                         /* @theme_option:forms_button_bg */
 
-@franklin-gothic-urw-condensed: "franklin-gothic-urw-cond",sans-serif;
-@harfang-pro: "harfang-pro",serif;
-@kings-caslon-display: "kings-caslon-display",serif;
-@oswald: 'Oswald', sans-serif;
-@open-sans: 'Open Sans', sans-serif;
-@main-font-family:@franklin-gothic-urw-condensed;           /* @theme_option:main_font[family] */
+@instareg: "Instagram Sans Regular",sans-serif;
+@instabold: "Instagram Sans Bold",sans-serif;
+@instaheadline: "Instagram Sans Headline Regular",sans-serif;
+
+
+@main-font-family:@instareg;           /* @theme_option:main_font[family] */
 @main-font-weight:normal;                          /* @theme_option:main_font[weight] */
 @main-font-style:normal;                           /* @theme_option:main_font[style] */
 @main-text-color:#6d6d6d;                          /* @theme_option:main_font_color */
@@ -53,15 +54,15 @@
 @line-height-base:1.333; // 24/18
 @line-height-computed: floor((@main-text-size * @line-height-base));
 
-@alternative-text-family:@harfang-pro;  /* @theme_option:alternative_text_font[family] */
+@alternative-text-family:@instareg;  /* @theme_option:alternative_text_font[family] */
 @alternative-text-weight:regular;                  /* @theme_option:alternative_text_font[weight] */
 @alternative-text-style:normal;                    /* @theme_option:alternative_text_font[style] */
 
-@heading-font-family:@harfang-pro;        /* @theme_option:heading_font[family] */
+@heading-font-family:@instareg;        /* @theme_option:heading_font[family] */
 @heading-font-weight:regular;                      /* @theme_option:heading_font[weight] */
 @heading-font-style:normal;                        /* @theme_option:heading_font[style] */
 
-@heading-one-font-family:@harfang-pro;    /* @theme_option:heading_one_font[family] */
+@heading-one-font-family:@instareg;    /* @theme_option:heading_one_font[family] */
 @heading-one-font-weight:400;                      /* @theme_option:heading_one_font[weight] */
 @heading-one-font-style:normal;                    /* @theme_option:heading_one_font[style] */
 @heading-one-text-size:30px;                       /* @theme_option:heading_one_font_size */
@@ -69,7 +70,7 @@
 @heading-one-text-color:#002a5c;                   /* @theme_option:heading_one_font_color */
 @heading-one-text-transform:none;             /* @theme_option:heading_one_text_transform */
 
-@heading-two-font-family:@harfang-pro;  /* @theme_option:heading_two_font[family] */
+@heading-two-font-family:@instareg;  /* @theme_option:heading_two_font[family] */
 @heading-two-font-weight:300;                  /* @theme_option:heading_two_font[weight] */
 @heading-two-font-style:normal;                    /* @theme_option:heading_two_font[style] */
 @heading-two-text-size:25px;                       /* @theme_option:heading_two_font_size */
@@ -77,7 +78,7 @@
 @heading-two-text-color:#00010f;                   /* @theme_option:heading_two_font_color */
 @heading-two-text-transform:none;                  /* @theme_option:heading_two_text_transform */
 
-@heading-three-font-family:@franklin-gothic-urw-condensed;  /* @theme_option:heading_three_font[family] */
+@heading-three-font-family:@instareg;  /* @theme_option:heading_three_font[family] */
 @heading-three-font-weight:500;                    /* @theme_option:heading_three_font[weight] */
 @heading-three-font-style:normal;                  /* @theme_option:heading_three_font[style] */
 @heading-three-text-size:23px;                     /* @theme_option:heading_three_font_size */
@@ -85,7 +86,7 @@
 @heading-three-text-color:#002a5c;                 /* @theme_option:heading_three_font_color */
 @heading-three-text-transform:none;           /* @theme_option:heading_three_text_transform */
 
-@heading-four-font-family:@franklin-gothic-urw-condensed;   /* @theme_option:heading_four_font[family] */
+@heading-four-font-family:@instareg;   /* @theme_option:heading_four_font[family] */
 @heading-four-font-weight:400;                     /* @theme_option:heading_four_font[weight] */
 @heading-four-font-style:italic;                   /* @theme_option:heading_four_font[style] */
 @heading-four-text-size:21px;                      /* @theme_option:heading_four_font_size */
@@ -93,7 +94,7 @@
 @heading-four-text-color:#6d6d6d;                  /* @theme_option:heading_four_font_color */
 @heading-four-text-transform:none;                 /* @theme_option:heading_four_text_transform */
 
-@heading-five-font-family:@franklin-gothic-urw-condensed;   /* @theme_option:heading_five_font[family] */
+@heading-five-font-family:@instareg;   /* @theme_option:heading_five_font[family] */
 @heading-five-font-weight:700;                     /* @theme_option:heading_five_font[weight] */
 @heading-five-font-style:normal;                   /* @theme_option:heading_five_font[style] */
 @heading-five-text-size:21px;                      /* @theme_option:heading_five_font_size */
@@ -101,7 +102,7 @@
 @heading-five-text-color:#a29061;                  /* @theme_option:heading_five_font_color */
 @heading-five-text-transform:none;                 /* @theme_option:heading_five_text_transform */
 
-@heading-six-font-family:@franklin-gothic-urw-condensed;    /* @theme_option:heading_six_font[family] */
+@heading-six-font-family:@instareg;    /* @theme_option:heading_six_font[family] */
 @heading-six-font-weight:400;                      /* @theme_option:heading_six_font[weight] */
 @heading-six-font-style:normal;                    /* @theme_option:heading_six_font[style] */
 @heading-six-text-size:18px;                       /* @theme_option:heading_six_font_size */
@@ -110,11 +111,11 @@
 @heading-six-text-transform:none;                  /* @theme_option:heading_six_text_transform */
 
 @placeholder-color:#cecece;
-@placeholder-font:normal 300 ~"0.933em/21px" @open-sans;
-@placeholder-font-active:normal 300 ~"0.933em/21px" @open-sans;
+@placeholder-font:normal 300 ~"0.933em/21px" @instareg;
+@placeholder-font-active:normal 300 ~"0.933em/21px" @instareg;
 
 @blockquote-text-color: #a29061;
-@blockquote-font-family: @harfang-pro;
+@blockquote-font-family: @instareg;
 @blockquote-font-weight: 400;
 @blockquote-font-style: italic;
 @blockquote-font-size: 1em;
@@ -161,16 +162,16 @@
 @image-opacity:0.8;
 
 // layout
-@layout-indent-sup-big:60px;
-@layout-indent-big:40px;
-@layout-indent:30px;
+@layout-indent-sup-big:100px;
+@layout-indent-big:100px;
+@layout-indent:100px;
 @layout-indent-small:20px;
 
 // header
 @header-bg: transparent;                             /* @theme_option:header_bg */
 @header-text-color:#353535;                     /* @theme_option:header_text_color */
 @header-text-color-hover:#005dab;               /* @theme_option:header_text_color_hover */
-@header__content-height:188px;
+@header__content-height:44px;
 @slider-home-height:865px;
 @slider-height:488px;
 

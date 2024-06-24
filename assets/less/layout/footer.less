@@ -1,6 +1,49 @@
 .footer {
-  background: @footer-bg;
-  color: @footer-text-color;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 9999999;
+
+  .footer-btns {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-evenly;
+
+    &__item {
+        &.pp.home {
+            position: relative;
+
+            &:after {
+                content: '';
+                width: 4px;
+                height: 4px;
+                background-color: #FF3040;
+                position: absolute;
+                border-radius: 50%;
+                bottom: -8px;
+                left: 50%;
+                margin-left: -2px;
+            }
+        }
+
+        a {
+            font-size: 24px;
+
+            &:hover {
+                opacity: .5;
+            }
+
+            img {
+                max-width: 24px;
+                border-radius: 50%;
+                border: 2px solid #000;
+                margin-top: -2px;
+            }
+        }
+    }
+  }
 
   &__widgets {
 
@@ -21,7 +64,7 @@
 
         &__title {
           color: @footer-heading-color;
-          font-family: @harfang-pro;
+          font-family: @instareg;
           font-weight: 400;
           font-size: 18em;
           opacity: 1;
@@ -54,22 +97,7 @@
 
   &__bottom {
     padding: 20px 0;
-    position: relative;
-    z-index: 3;
-    font-size: 0.867em;
-    border-top: 1px solid #d1dae5;
-
-    &:before {
-      content: " ";
-      display: block;
-      width: 100%;
-      height: 1px;
-      background: @footer-bg;
-      position: absolute;
-      top: 0;
-      .left(0);
-      opacity: @footer-delimiter-opacity;
-    }
+    border-top: 1px solid #DBDBDB;
   }
 
   &__arrow-top {
@@ -232,14 +260,14 @@
   &__copyright {
     text-align: center;
     color: @footer-text-color;
-    font-family: @franklin-gothic-urw-condensed;
+    font-family: @instareg;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.5em;
 
     a {
       color: @footer-links-color;
-      font-family: @franklin-gothic-urw-condensed;
+      font-family: @instareg;
       font-weight: 400;
 
       &:hover {

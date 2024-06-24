@@ -72,6 +72,7 @@ class Theme {
          */
 
         add_action( 'init', array($this, 'createPostTypes')); 
+        add_action( 'acf/save_post',array($this, 'my_save_post'), 20); 
         
     }
 
@@ -152,21 +153,21 @@ class Theme {
         return acf_form_head();
     }
 
-    public function createAcfForm($fieldGroupId, $postType, $button = 'Submit', $redirect = null){
-        return 	acf_form(array(
-            'post_id'		=> 'new_post',
-            'post_title'	=> false,
-            'post_content'	=> false,
-            'field_groups'	=> array($fieldGroupId),
-            //'submit_value'	=> $button,
+    public function createAcfForm($fieldGroupId, $postType, $fieldId = null, $button = 'Submit', $redirect = null){
+        return acf_form(array(
+            'post_id' => 'new_post',
+            'post_title' => false,
+            'post_content' => false,
+            'field_groups' => array($fieldGroupId),
             'html_submit_button' => '<a href="#" class="acf-button button button-primary button-large">'.$button.'</a>',
-            'new_post'		=> array(
-                'post_type'		=> $postType,
-                'post_status'	=> 'publish'
+            'new_post' => array(
+                'post_type' => $postType,
+                'post_status' => 'publish'
             ),
             'form' => true,
-            'return' => (is_null($redirect))?get_permalink(get_the_ID()):home_url('/'.$redirect),
-            'updated_message' => __("Account Created", 'acf'),
+            'return' => (is_null($redirect)) ? get_home_url() : ('/'.$redirect),
+            'updated_message' => __("Entry Created", 'acf'),
+            'field_id' => $fieldId, // Add the field ID here to pass it to the hook
         ));
     }
 
@@ -251,87 +252,27 @@ class Theme {
             /**
              * bail out if not a custom type and admin
              */
-            $types = array();
+            $types = array('guests');
 
-            foreach($this->post_types as $pt):
-                $types[] = $pt['post_type']; 
-            endforeach;
-            
+
             if(!(in_array($post_values->post_type, $types))){
                 return;
             }
 
-            if($_POST['_acf_post_id'] == "new_post"){
-                /**
-                 * applicant set values
-                 */
+            if($post_values->post_type == 'guests'){
+                // Get the field value from the ACF form submission
+                $field_value = isset($_POST['acf']['acf-field_6674d950cfe08']) ? sanitize_text_field($_POST['acf']['acf-field_6674d950cfe08']) : '';
 
-                foreach($this->post_types as $pt):
-                    if($post_values->post_type == $pt['post_type']){
-                        /**
-                         * update post
-                         */
+                // Update the post title
+                if (!empty($field_value)) {
+                    $post_data = array(
+                        'ID' => $post_id,
+                        'post_title' => $field_value
+                    );
+                    wp_update_post($post_data);
+                }
 
-                        if(is_array($pt['title_acf']) && is_object(get_field($pt['title_acf'][0], $_POST['acf'][$pt['title_acf'][1]]))):
-                            $fobj = get_field($pt['title_acf'][0], $_POST['acf'][$pt['title_acf'][1]]);
-                            $title = (is_array($pt['title_acf']))?$fobj->post_title:$_POST['acf'][$pt['title_acf']];
-                        else:
-                            $title = (is_array($pt['title_acf']))?get_field($pt['title_acf'][0], $_POST['acf'][$pt['title_acf'][1]]):$_POST['acf'][$pt['title_acf']];
-                        endif;
-    
-                        $my_post = array(
-                            'ID'           => $post_id,
-                            'post_title'   => $title
-                        );
-    
-                        wp_update_post( $my_post );
-                    }
-                endforeach;
-
-                /**
-                 *  Clear POST data
-                 */
                 unset($_POST);
-
-                /**
-                 * notifications
-                 */
-         
-            }
-            else if($_POST['_acf_post_id'] == $post_id) {
-
-                foreach($this->post_types as $pt):
-                    if($post_values->post_type == $pt['post_type']){
-                        /**
-                         * update post
-                         */
-                        if(is_array($pt['title_acf']) && is_object(get_field($pt['title_acf'][0], $_POST['acf'][$pt['title_acf'][1]]))):
-                            $fobj = get_field($pt['title_acf'][0], $_POST['acf'][$pt['title_acf'][1]]);
-                            $title = (is_array($pt['title_acf']))?$fobj->post_title:$_POST['acf'][$pt['title_acf']];
-                        else:
-                            $title = (is_array($pt['title_acf']))?get_field($pt['title_acf'][0], $_POST['acf'][$pt['title_acf'][1]]):$_POST['acf'][$pt['title_acf']];
-                        endif;
-
-                        
-    
-                        $my_post = array(
-                            'ID'           => $post_id,
-                            'post_title'   => $title
-                        );
-    
-                        wp_update_post( $my_post );
-                    }
-                endforeach;
-
-                /**
-                 *  Clear POST data
-                 */
-                unset($_POST);
-
-                /**
-                 * notifications
-                 */
-
             }
         }
     }

@@ -41,10 +41,7 @@ if ( ! function_exists( 'qed_comment_form_renderer' ) ) {
 				            '</div>',
 				'email' => '<div class="col-md-12">' .
 				           '<input id="email" name="email" type="text" placeholder="Email" value="' . esc_attr( $commenter['comment_author_email'] ) . '" size="30" />' .
-				           '</div>',
-				'url' => '<div class="col-md-12">' .
-				         '<input id="url" name="url" type="text" placeholder="Website" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />' .
-				         '</div></div>',
+				           '</div></div>',
 		);
 		$args = array(
 				'fields' => apply_filters( 'comment_form_default_fields', $fields ),
@@ -53,7 +50,7 @@ if ( ! function_exists( 'qed_comment_form_renderer' ) ) {
 				'comment_field' => '<div class="row"><div class="col-md-12"><textarea id="comment" name="comment">Your Message</textarea></div></div>',
 				'label_submit' => '',
 				'cancel_reply_link' => '<i class="fa fa-times"></i>',
-				'title_reply'          => __( 'Leave a Comment' ),
+				'title_reply'          => __( 'Leave a Message' ),
 				'title_reply_to'       => __( 'Leave a Reply to %s' ),
 				'title_reply_before'   => '<div class="title title--center margin-bottom"><h3 id="reply-title" class="title__primary">',
 				'title_reply_after'    => '</h3></div>',
@@ -102,8 +99,9 @@ if ( ! function_exists( 'qed_comment_renderer' ) ) {
 
 if ( have_comments() ) {
 echo '<div class="comments margin-top" id="comments">';
+qed_comment_form_renderer();
 echo '<div class="section-title title title--center">' .
-	 '<h3 class="title__primary">' . esc_html__( 'Comments', 'swishdesign' ) . '</h3>' .
+	 '<h3 class="title__primary">' . esc_html__( 'Messages & Wishes', 'swishdesign' ) . '</h3>' .
 	 '</div>';
 	echo '<div class="padding-all comments-wrap margin-bottom">';
 	wp_list_comments( array(
@@ -115,6 +113,5 @@ echo '<div class="section-title title title--center">' .
 	echo '</div>';
 	qed_comments_pagination();
 };
-qed_comment_form_renderer();
 echo '</div><!-- end .comments -->';
 

@@ -2,17 +2,52 @@
   display: block;
   width: 100%;
   color: @header-text-color;
-  background: transparent !important;
+  background: #fff !important;
   min-height: @header__content-height;
+  border-bottom: 1px solid #dbdbdb;
+
+  &-title {
+    font-family: @instabold;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  &-content {
+    position: relative;
+  }
+
+  .messenger-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -22px;
+    height: 44px;
+
+    a {
+      font-size: 24px;
+    }
+  }
+
+  .back-btn-header {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    margin-top: -22px;
+    height: 44px;
+
+    a {
+        font-size: 24px;
+    }
+}
 
   .top_layer {
     display: block;
-    height: 73px !important;
-    line-height: 73px !important;
+    height: 44px !important;
+    line-height: 44px !important;
     background: #ffffff;
 
     h1 {
-      font-family: @franklin-gothic-urw-condensed;
+      font-family: @instareg;
       font-weight: 500;
       font-size: 24px;
       line-height: 73px !important;
@@ -66,7 +101,7 @@
 
       span.contact-popup-intro {
         display: inline-block;
-        font-family: @kings-caslon-display;
+        font-family: @instareg;
         font-weight: 400;
         font-size: 20px;
         line-height: 1.1em;

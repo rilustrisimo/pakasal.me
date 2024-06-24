@@ -28,6 +28,31 @@
             "mime_types": ""
         },
         {
+            "key": "field_5a5696a52b0401",
+            "label": "Profile Picture",
+            "name": "profile_picture",
+            "type": "image",
+            "value": null,
+            "instructions": "Upload a profile picture",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "url",
+            "preview_size": "large",
+            "library": "all",
+            "min_width": null,
+            "min_height": null,
+            "min_size": "",
+            "max_width": "",
+            "max_height": "",
+            "max_size": "",
+            "mime_types": ""
+        },
+        {
             "key": "field_5a5697292b041",
             "label": "Google Map API Key",
             "name": "google_map_api_key",

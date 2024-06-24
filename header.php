@@ -19,58 +19,18 @@ if ( $is_sticky_header ) {
 <header class="header" role="banner">
 	<div class="top_layer">
 		<div class="header__content-wrap">
-			<div class="container-fluid">
+			<div class="container">
 				<div class="row">
-					<div class="col-md-3">
-						<?php get_template_part( 'templates/header/logo' ); ?>
+					<div class="col-md-12 header-content">
+						<?php if(!is_front_page()): ?>
+						<div class="back-btn-header"><a href="<?php echo get_home_url(); ?>"><i class="fa-solid fa-chevron-left"></i></a></div>
+						<?php endif; ?>
+						<div class="header-title"><?php echo (is_single())?'Post':'pakasal.me';?></div>
+						<div class="messenger-btn"><a href="https://m.me/rouie" target="_blank"><i class="fa-brands fa-facebook-messenger"></i></a></div>
 					</div><!-- .header__content -->
-					<div class="col-md-6">
-						<h1>Your Personal Injury Specialist</h1>
-					</div><!-- .header__content -->
-					<div class="col-md-3">
-						
-					</div><!-- .header__content -->
-					<div class="clearfix"></div>
 				</div>
 			</div><!-- .container -->
 		</div><!-- .header__content-wrap -->
-	</div>
-	<div class="clearfix"></div>
-	<div class="middle_layer">
-		<div class="header__content-wrap">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="content-popup-wrap">
-							<span class="contact-popup-intro">Contact Us Today For a Free Initial Consultation</span><a id="contact-popup-btn" class="button button--default fancybox-inline" href="#contact-lightbox">Call Us Now</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div><!-- .header__content-wrap -->
-	</div>
-	<div class="clearfix"></div>
-	<div class="bottom_layer">
-		<div class="container">
-			<div class="header__content-wrap">
-				<div class="row">
-					<div class="col-md-12 header__content">
-						<?php if ( has_nav_menu( 'header-menu' ) ) : ?>
-							<nav class="main-nav-header" role="navigation">
-								<?php wp_nav_menu(array(
-									'theme_location' => 'header-menu',
-									'container' => 'ul',
-									'menu_class' => 'main-nav',
-									'menu_id' => 'navigation',
-									'depth' => 3,
-								)); ?>
-							</nav>
-						<?php endif; ?>
-						<div class="clearfix"></div>
-					</div><!-- .header__content -->
-				</div>
-			</div><!-- .header__content-wrap -->
-		</div><!-- .container -->
 	</div>
 	<div class="clearfix"></div>
 </header>

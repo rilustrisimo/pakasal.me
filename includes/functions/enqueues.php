@@ -35,6 +35,7 @@ if ( ! function_exists( 'qed_init_theme_assets' ) ) {
 			}
 
 			wp_enqueue_style( 'datepicker', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css', array(), '' );
+			wp_enqueue_style( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.17/dist/fancybox/fancybox.css', array(), '' );
 			wp_enqueue_style( 'fontawesome',  PARENT_URL . '/assets/fontawesome/css/all.css', array(), '6.1.1');
 			wp_enqueue_style( 'bootstrap-select', PARENT_URL . '/assets/csslib/bootstrap-select/bootstrap-select.min.css', array(), '1.12.2' );
 			wp_enqueue_style( 'bxslider', PARENT_URL . '/assets/csslib/bxslider/jquery.bxslider.min.css', array(), '4.2.12' );
@@ -45,6 +46,7 @@ if ( ! function_exists( 'qed_init_theme_assets' ) ) {
 			
 			wp_enqueue_script( 'datepicker', 'https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js',array( 'jquery' ), '',true );
 			wp_enqueue_script( 'dialog', 'https://code.jquery.com/ui/1.12.1/jquery-ui.js',array( 'jquery' ), '',true );
+			wp_enqueue_script( 'fancybox', 'https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.17/dist/fancybox/fancybox.umd.js',array( 'jquery' ), '',true );
 			wp_enqueue_script( 'fontawesome', PARENT_URL . '/assets/fontawesome/js/all.js',array( 'jquery' ), '',true );
 			wp_enqueue_script( 'bootstrap', PARENT_URL . '/assets/jslib/bootstrap.min.js',array( 'jquery' ), '',true );
 			wp_enqueue_script( 'bootstrap-select', PARENT_URL . '/assets/jslib/bootstrap-select/bootstrap-select.min.js', array( 'jquery', 'bootstrap' ), '1.12.2', true );
