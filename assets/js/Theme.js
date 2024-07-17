@@ -179,6 +179,11 @@ var Theme = {
         $('.acf-form-submit a').click(function(){
             $(this).parents('.acf-form').submit();
         });
+
+        if($("#rand").val() != "") {
+            $('.modal-custom').hide();
+            $('#guests').show();
+        }
     },
 
     mobileChecker: function($) {

@@ -165,10 +165,20 @@ class Theme {
                 'post_status' => 'publish'
             ),
             'form' => true,
-            'return' => (is_null($redirect)) ? get_home_url() : ('/'.$redirect),
+            'return' => (is_null($redirect)) ? get_home_url().'?r='.$this->generateRandomString() : ('/'.$redirect),
             'updated_message' => __("Entry Created", 'acf'),
             'field_id' => $fieldId, // Add the field ID here to pass it to the hook
         ));
+    }
+
+    public function generateRandomString($length = 10) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
+        }
+        return $randomString;
     }
 
     public function updateAcfForm($postid, $fieldGroupId, $button = 'Update', $redirect = null) {

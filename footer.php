@@ -32,6 +32,7 @@ do_action('eyor_after_main_content');
 </footer>
 <input type="hidden" id="base-url" value="<?php echo home_url(); ?>">
 <input type="hidden" id="ajax-url" value="<?php echo admin_url('admin-ajax.php'); ?>">
+<input type="hidden" id="rand" value="<?php echo (isset($_GET['r']))?$_GET['r']:''; ?>">
 <?php
 get_template_part( 'templates/modals/page', 'rsvp' );
 get_template_part( 'templates/modals/page', 'accom' );
