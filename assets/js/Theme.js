@@ -117,6 +117,8 @@ var Theme = {
 
                     Theme.attach = [];
 
+                    $('.attachments-wrapper').append('<div id="upload-spinner" style="display: none;"><img src="https://pakasal.me/wp-content/uploads/2024/07/loader-pakasal.gif" alt="Loading..."></div>');
+
                     setInterval(function() {
                         $('.attachment.selected').each(function() {
                             var id = $(this).attr('data-id');
@@ -139,6 +141,14 @@ var Theme = {
 
                         $('.attachments li').not(selector).hide();
                     }, 10);
+
+                    setInterval(function() {
+                        if($('.attachments li:visible').length == 0) {
+                            $('#upload-spinner').show();
+                        } else {
+                            $('#upload-spinner').hide();
+                        }
+                    }, 1000);
                 }
             });
         })(jQuery);                      
