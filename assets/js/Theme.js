@@ -143,6 +143,7 @@ var Theme = {
                     }, 10);
 
                     setInterval(function() {
+                        console.log('here');
                         if($('.attachments li:visible').length == 0) {
                             $('#upload-spinner').show();
                         } else {
