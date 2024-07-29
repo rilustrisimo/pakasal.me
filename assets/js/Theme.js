@@ -143,13 +143,16 @@ var Theme = {
                     }, 10);
 
                     setInterval(function() {
-                        console.log('here');
+                        if($('#upload-spinner').length == 0){
+                            $('.attachments-wrapper').append('<div id="upload-spinner" style="display: none;"><img src="https://pakasal.me/wp-content/uploads/2024/07/loader-pakasal.gif" alt="Loading..."></div>');
+                        }
+
                         if($('.attachments li:visible').length == 0) {
                             $('#upload-spinner').show();
                         } else {
                             $('#upload-spinner').hide();
                         }
-                    }, 1000);
+                    }, 500);
                 }
             });
         })(jQuery);                      
