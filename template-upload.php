@@ -44,7 +44,7 @@ if ( have_posts() ) : ?>
 			<div class="row">
 				<div class="col-md-12">
 					<?php if(is_user_logged_in()): ?>
-					<?php $theme->createAcfForm(139, 'uploads', null, 'Submit', get_home_url()); ?>
+					<?php $theme->createAcfForm(139, 'uploads', null, 'Submit', '?upload='.$theme->generateRandomString()); ?>
 					<?php else: ?>
 					<?php echo do_shortcode('[ultimatemember form_id="163"]'); ?>
 					<?php endif; ?>
